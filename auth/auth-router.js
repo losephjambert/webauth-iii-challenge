@@ -3,9 +3,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const Users = require('../users/users-model.js');
-const requiresAuth = require('./requires-auth-middleware.js');
 
-router.get('/', requiresAuth, (req, res) => {
+router.get('/', (req, res) => {
   res.status(200).json({ message: `auth router is up` });
 });
 

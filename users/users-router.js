@@ -1,24 +1,25 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-const Users = require('./users-model.js')
+const Users = require('./users-model.js');
+const requiresAuth = require('../auth/requires-auth-middleware.js');
 
-router.get('/', async (req, res) => {
-  const department = req.query.department
-  let users
+router.get('/', requiresAuth, async (req, res) => {
+  const department = req.query.department;
+  let users;
   try {
     if (department) {
-      users = await Users.findByDepartment(department)
+      users = await Users.findByDepartment(department);
     } else {
-      users = await Users.find()
+      users = await Users.find();
     }
   } catch (error) {
     res.status(500).json({
       message: `Error retrieving usres from the db`,
-      error
-    })
+      error,
+    });
   } finally {
-    res.status(200).json({ users })
+    res.status(200).json({ users });
   }
-})
+});
 
-module.exports = router
+module.exports = router;

@@ -1,7 +1,9 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-router.get('/', (req, res) => {
-  res.status(200).json({ message: `auth router is up` })
-})
+const requiresAuth = require('./requires-auth-middleware.js');
 
-module.exports = router
+router.get('/', requiresAuth, (req, res) => {
+  res.status(200).json({ message: `auth router is up` });
+});
+
+module.exports = router;

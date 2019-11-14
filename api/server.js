@@ -1,13 +1,17 @@
-const express = require('express')
+const express = require('express');
 
-const apiRouter = require('./api-router.js')
+const apiRouter = require('./api-router.js');
 
-const server = express()
+const configureMiddleware = require('./configure-middleware.js');
 
-server.use('/api', apiRouter)
+const server = express();
+
+configureMiddleware(server);
+
+server.use('/api', apiRouter);
 
 server.get('/', (req, res) => {
-  res.status(200).json({ message: `api is up` })
-})
+  res.status(200).json({ message: `api is up` });
+});
 
-module.exports = server
+module.exports = server;

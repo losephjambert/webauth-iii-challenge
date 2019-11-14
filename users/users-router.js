@@ -3,14 +3,21 @@ const router = require('express').Router()
 const Users = require('./users-model.js')
 
 router.get('/', async (req, res) => {
+  const department = req.query.department
+  let users
   try {
-    const users = await Users.find()
-    res.status(200).json({ users })
+    if (department) {
+      users = await Users.findByDepartment(department)
+    } else {
+      users = await Users.find()
+    }
   } catch (error) {
     res.status(500).json({
       message: `Error retrieving usres from the db`,
       error
     })
+  } finally {
+    res.status(200).json({ users })
   }
 })
 

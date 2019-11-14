@@ -4,7 +4,7 @@ const Users = require('./users-model.js');
 const requiresAuth = require('../auth/requires-auth-middleware.js');
 
 router.get('/', requiresAuth, async (req, res) => {
-  const department = req.query.department;
+  const department = req.query.department || req.docodedToken.department;
   let users;
   try {
     if (department) {

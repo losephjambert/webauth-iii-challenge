@@ -1,0 +1,34 @@
+{
+  "name": "webauth-iii-challenge",
+  "version": "1.0.0",
+  "description": "## Topics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/losephjambert/webauth-iii-challenge.git"
+  },
+  "author": "Joseph Lambert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/losephjambert/webauth-iii-challenge/issues"
+  },
+  "homepage": "https://github.com/losephjambert/webauth-iii-challenge#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.1",
+    "knex-cleaner": "^1.3.0",
+    "sqlite": "^3.0.3"
+  }
+}
